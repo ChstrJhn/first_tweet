@@ -48,6 +48,7 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 
+
 use OmniAuth::Builder do
   provider :twitter, ENV["CUSTOMER_KEY"], ENV["CUSTOMER_SECRET"]
 end

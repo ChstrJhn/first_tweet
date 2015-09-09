@@ -27,6 +27,10 @@
       <% if session[:admin] %>
         <a href="/logout">Logout</a>
       <% else %>
+        <form id="sign_in_twitter" action="/sign_in_twitter" method="POST">
+          <input type="text" name="twitter_handle" placeholder="enter twitter handle">
+          <input type="password"
+        </form>
         <a href="/auth">Login with Twitter</a>
       <% end %>
   </header>
