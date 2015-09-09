@@ -1,11 +1,17 @@
 class User < ActiveRecord::Base
   has_many :tweets
 
-  #   def fetch_tweets
-  # 	@user_feed = $twitter.user_timeline(self.twitter_handle)
-  # 	@new_tweet = Tweet.find_or_create_by(text: )
-  # 	@updated_tweet = @user_feed.take(1)
-  # 	end
-  # end
+def twitter_client
+	$twitter = Twitter::REST::Client.new do |config|
+	config.consumer_key = ENV["CUSTOMER_KEY"]
+	config.consumer_secret = ENV["CUSTOMER_SECRET"]
+	config.access_token = self.token
+	config.access_token_secret = self.token_secret
+  end
+  $twitter
+end
+
 
 end
+
+

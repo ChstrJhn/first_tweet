@@ -24,10 +24,10 @@
   <header>
     <a href="/">Twatter</a>
     <div id="login-toolbar">
-      <% if current_user %>
+      <% if session[:admin] %>
         <a href="/logout">Logout</a>
       <% else %>
-        <a href="/login">Login</a>
+        <a href="/auth">Login with Twitter</a>
       <% end %>
   </header>
   <%= yield %>

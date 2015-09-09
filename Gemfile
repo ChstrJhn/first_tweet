@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.2.2"
 
 # PostgreSQL driver
 gem 'pg'
@@ -11,7 +12,7 @@ gem 'activesupport'
 gem 'activerecord'
 gem 'bcrypt-ruby'
 gem 'twitter'
-gem 'twitter_oauth'
+gem 'omniauth-twitter'
 gem 'byebug'
 
 gem 'rake'

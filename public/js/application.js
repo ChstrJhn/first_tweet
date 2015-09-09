@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+$("#celebratin").find("img").hide();
+
 $(".post_tweet").submit(function(event){
   event.preventDefault();
   var $button = $(this).children("#post_tweet_btn");
@@ -13,7 +15,7 @@ $(".post_tweet").submit(function(event){
   }).done(function(response){
      $("#latest_tweet").html("<p>You've posted a new tweet.<a id='timeline' href='/timeline'>View your timeline.</a></p>");
      $button.val("Updated");
-     $("#celebratin").html("<img src='img/celebration.gif'>")
+     $("#celebratin").find("img").show();
   });
 
 });
@@ -27,8 +29,8 @@ $("body").on("click", "#timeline", (function(event){
 		type: "GET",
 		dataType: "html"
 	}).done(function(response){
-	$("#celebratin").hide();
 	$("#latest_tweet").hide();
+	$("#celebratin").find("img").hide();
     $("#user_timeline").html(response);
 	});
 
