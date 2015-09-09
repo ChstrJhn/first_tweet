@@ -48,16 +48,3 @@ end
 get '/auth/failure' do
   params[:message]
 end
-
-# get '/updated_tweet' do
-# 	erb :updated_tweet
-# end
-
-
-# get '/login' do
-  
-# end
-
-# get '/signup' do
-  
-# end
