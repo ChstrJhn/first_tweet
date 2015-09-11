@@ -13,11 +13,15 @@ require 'pathname'
 require 'yaml'
 require 'twitter'
 require 'omniauth-twitter'
+require 'sidekiq/api'
+
 
 require 'pg'
 require 'active_record'
 require 'logger'
 require 'byebug'
+require 'sidekiq'
+require 'redis'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
@@ -48,7 +52,8 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 
+API_KEYS = YAML::load(File.open('config/secret.yaml'))
 
 use OmniAuth::Builder do
-  provider :twitter, ENV["CUSTOMER_KEY"], ENV["CUSTOMER_SECRET"]
+  provider :twitter, API_KEYS["TWITTER_CONSUMER_KEY"], API_KEYS["TWITTER_CONSUMER_SECRET"]
 end

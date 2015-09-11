@@ -14,6 +14,8 @@ gem 'bcrypt'
 gem 'twitter'
 gem 'omniauth-twitter'
 gem 'byebug'
+gem 'sidekiq'
+gem 'redis'
 
 gem 'rake'
 

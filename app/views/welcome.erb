@@ -4,12 +4,21 @@
 	<p>You're not logged into Twitter...</p>
 <% end %>
 
+
 <form class="post_tweet" action="/post_tweet" method="POST">
-	<input type="text" name="content" placeholder="write a tweet!">
+	<input type="text" name="content" placeholder="write a tweet!"> post in
+	<select name="time">
+		<option value="now">now</option>
+		<option value="5">5 minutes</option>
+		<option value="15">15 minutes</option>
+		<option value="30">30 minutes</option>
+		<option value="60">1 hour</option>
+	</select>
 	<input id="post_tweet_btn" type="submit" value="Update">
 </form>
 
 <div>
+<div id="countdown"></div>
 <div id="latest_tweet"></div>
 <div id="celebratin"><img src='img/celebration.gif'></div>
 <div id="user_timeline"></div>
