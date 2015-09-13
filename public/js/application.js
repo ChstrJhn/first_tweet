@@ -3,6 +3,7 @@ $(document).ready(function() {
 $("#celebratin").find("img").hide();
 var interval;
 var pause = 1000;
+var time;
 
 $(".post_tweet").submit(function(event){
 
@@ -17,8 +18,8 @@ $(".post_tweet").submit(function(event){
     dataType: 'json',
   	data: $(this).serialize(),
   }).done(function(response){
-
       console.log(response.jid);
+      time = 
       var jid = response.jid;
       checkStatus(jid);
       $("#latest_tweet").html("<p>Nice, your timeline will be updated soon.<a id='timeline' href='/timeline'>View your timeline.</a></p>");
@@ -47,20 +48,27 @@ $("body").on("click", "#timeline", (function(event){
 
 }));
 
+function stopChecking() {
+  clearInterval(interval);
+}
+
 function checkStatus(jid) {
   interval = setInterval(function(){
     $.ajax({
       type: "GET",
       url: "/status/" + jid
     }).done(function(response){
-      if (response === true){
+      console.log("heyho");
+      console.log("/status/" + jid);
+      if (response === "true"){
         $("#countdown").html("<p>Your tweet has flown!</p>");
+        stopChecking();
       }
-      else{
-        $("#countdown").html("<p>Still waiting...</p>");
+      else if (response === "false"){
+        $("#countdown").html("<p>Still waiting...check back in a bit!</p>");
       }
     });
-  },pause);
+  }, pause);
 }
 
 

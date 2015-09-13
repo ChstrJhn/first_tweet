@@ -16,6 +16,8 @@ post '/post_tweet' do
   	  	if request.xhr?
   	      if (params[:time]).to_i <= 60
 	        jid = @user.tweet_later(params[:time],params[:content])
+	        data[jid:] = jid
+	        data 
             return {jid: jid}.to_json
 	        redirect '/'
 	      elsif (params[:time]).to_i == "now"
@@ -73,9 +75,9 @@ end
 get '/status/:job_id' do
 @work_complete = TweetWorker.job_is_complete(params[:job_id])
   if @work_complete
-  	return true
+  	return "true"
   else
-  	return false
+  	return "false"
   end
 end
 
